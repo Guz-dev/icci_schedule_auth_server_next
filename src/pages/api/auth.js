@@ -15,7 +15,7 @@ export default async function handler(req, res) {
   const data = verifyToken(req.body.token)
   console.log(data)
 
-  if (user_login(data.email, data.password) == true){
+  if (await user_login(data.email, data.password) == true){
     console.log("User is authenticated")
     const token = generateToken(req.body.email, req.body.password)
     res.send( { token } )
