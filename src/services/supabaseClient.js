@@ -1,9 +1,8 @@
 import { createClient } from '@supabase/supabase-js'
 
 export function user_login(email, password) {
-  return true
-  const supabaseUrl = process.env.SUPABASE_URL
-  const supabaseKey = process.env.SUPABASE_KEY
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY
   try{
     const supabase = createClient(supabaseUrl, supabaseKey)
     const { data, error } = supabase.from('users').select('*').eq('email', email).eq('password', password)
