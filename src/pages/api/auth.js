@@ -13,6 +13,7 @@ export default async function handler(req, res) {
   })
 
   const data = verifyToken(req.body.token)
+  console.log(data)
 
   if (user_login(data.email, data.password)){
     console.log("User is authenticated")
