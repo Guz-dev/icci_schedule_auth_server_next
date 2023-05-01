@@ -12,14 +12,14 @@ export default async function handler(req, res) {
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   })
 
-  console.log(req.body)
-  console.log(verifyToken(req.body.token))
+  const data = verifyToken(req.body.token)
 
-  if (user_login(req.body.email, req.body.password)){
+  if (user_login(data.email, data.password)){
     console.log("User is authenticated")
     const token = generateToken(req.body.email, req.body.password)
     res.send( { token } )
   } else {
+    console.log("User is not authenticated")
     res.send( { token: null })
   } 
 
